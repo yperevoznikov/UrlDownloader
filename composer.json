@@ -1,0 +1,23 @@
+{
+    "name": "yperevoznikov/urldownloader",
+    "description": "Downloads files and provides easy stubs for unittesting",
+    "type": "Library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Yuriy Perevoznikov",
+            "email": "yuriless@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+      "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+      "psr-4": {"YPUrldownloader\\": "src"}
+    },
+    "autoload-dev": {
+      "psr-4": {"YPUrldownloader\\": "tests"}
+    }
+}
