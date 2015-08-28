@@ -26,7 +26,6 @@ class DownloaderEmulatorTest extends \PHPUnit_Framework_TestCase
     public function dataProviderDownload() {
         return array(
             array('http://yandex.ru/search/', array('lr' => '21653', 'text' => 'test'), 'yandex'),
-            array('http://yandex.ru/search', array('lr' => '21653', 'text' => 'test'), 'yandex'),
             array('http://yandex.ru', array(), 'yandex'),
             array('http://google.com', array(), 'google'),
         );
