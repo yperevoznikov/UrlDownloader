@@ -14,8 +14,6 @@ class Downloader extends ADownloader {
             CURLOPT_CUSTOMREQUEST  =>"GET",        //set request type post or get
             CURLOPT_POST           =>false,        //set to GET
             CURLOPT_USERAGENT      => $userAgent, //set user agent
-//            CURLOPT_COOKIEFILE     =>"cookie.txt", //set cookie file
-//            CURLOPT_COOKIEJAR      =>"cookie.txt", //set cookie jar
             CURLOPT_RETURNTRANSFER => true,     // return web page
             CURLOPT_HEADER         => false,    // don't return headers
             CURLOPT_ENCODING       => "",       // handle all encodings
@@ -42,6 +40,35 @@ class Downloader extends ADownloader {
 
         return $content;
     }
+
+	public function downloadPost($baseUrl, $paramsUrl=array(), $postData=array()){
+		$url = $this->getFullUrl($baseUrl, $paramsUrl);
+
+		$userAgent = $this->getRandomUserAgent();
+
+		$options = array(
+			CURLOPT_CUSTOMREQUEST  =>"POST",        //set request type post or get
+			CURLOPT_POST           => true,        //set to GET
+			CURLOPT_POSTFIELDS	   => http_build_query($postData),
+			CURLOPT_USERAGENT      => $userAgent, //set user agent
+			CURLOPT_RETURNTRANSFER => true,     // return web page
+			CURLOPT_HEADER         => false,    // don't return headers
+			CURLOPT_ENCODING       => "",       // handle all encodings
+			CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+			CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+			CURLOPT_TIMEOUT        => 120,      // timeout on response
+			CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+			CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+		);
+
+		$ch      = curl_init( $url );
+		curl_setopt_array( $ch, $options );
+		$content = curl_exec( $ch );
+
+		curl_close( $ch );
+
+		return $content;
+	}
 
     public function downloadForEmulator($baseUrl, $params=array(), $inDir='.') {
 

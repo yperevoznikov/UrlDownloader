@@ -34,6 +34,11 @@ class DownloaderTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('yandex', $content);
     }
 
+	public function testDownloadPost(){
+		$content = $this->downloader->downloadPost('http://yandex.ru');
+		$this->assertContains('yandex', $content);
+	}
+
     public function testDownloadForEmulator(){
         $testUrl = 'http://yandex.ru';
         $this->downloader->downloadForEmulator($testUrl, array(), $this->filesDir);
