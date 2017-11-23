@@ -2,7 +2,8 @@
     "name": "yperevoznikov/urldownloader",
     "description": "Downloads files and provides easy stubs for unittesting",
     "type": "Library",
-    "license": "proprietary",
+    "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Yuriy Perevoznikov",
